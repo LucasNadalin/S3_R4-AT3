@@ -19,5 +19,5 @@ app.get("/adicao/:numUm/:numDois", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando http://localhost:${PORT}`)
+    console.log(`Servidor rodando http://localhost:${PORT}`)ss
 });

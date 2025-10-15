@@ -1,51 +1,49 @@
 const express = require("express");
 const app = express();
-const PORT = 8082;
+const PORT = 8083;
 
-app.get("/:operacao/:numUm/:numDois", (req, res) => {
+app.get("/", (req, res) =>{
     try {
-        const{operacao, numUm, numDois} = req.params;
+        const operacao = req.query.operacao;
+        const numUm = parseFloat(req.query.numUm);
+        const numDois = parseFloat(req.query.numDois);
 
-        const n1 = parseFloat(numUm);
-        const n2 = parseFloat(numDois);
-
-        if(numUm & numDois == undefined || numUm & numDois == "" || isNaN(n1) || isNaN(n2)){
-            return res.status(400).send(`Caractere inválido ou faltanta, digite um número!`);
+        if(numUm & numDois == undefined || numUm & numDois == "" || isNaN(numUm) || isNaN(numDois)){
+            return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         }
 
-        let resultado
+        let resultado;
 
-        //Switch Case
+        // Switch Case
         switch(operacao){
-            case "adicao":
-                resultado = n1 + n2;
+            case "soma":
+                resultado = numUm + numDois;
             break;
             case "subtracao":
-                resultado = n1 - n2;
+                resultado = numUm - numDois;
             break;
             case "multiplicacao":
-                resultado = n1 * n2;
+                resultado = numUm * numDois;
             break;
             case "divisao":
-                if (n2 === 0){
+                 if (numDois === 0){
                     return res.status(400).send("Não é possível fazer divisão por 0");
                 }else{
-                    resultado = n1 / n2;
-                }
+                    resultado = numUm / numDois;
+                };
             break;
             default:
                 return res.status(400).send("Operação inválida ou indispónivel");
-        }
+        };
 
         res.status(200).send(`Resultado: ${resultado.toFixed(2)}`);
-
-
+        
     } catch (error) {
-        console.error("Erro ao realizar o calculo!")
-        res.status(500).send(`Erro interno no servidor!`)
+        console.error("Erro ao realizar o calculo!");
+        res.status(500).send(`Erro interno no servidor!`);
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando http://localhost:${PORT}`)
+    console.log(`Servidor rodando http://localhost:${PORT}`);
 });

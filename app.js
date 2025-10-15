@@ -10,7 +10,7 @@ app.get("/:operacao/:numUm/:numDois", (req, res) => {
         const n2 = parseFloat(numDois);
 
         if(numUm & numDois == undefined || numUm & numDois == "" || isNaN(n1) || isNaN(n2)){
-            return res.status(400).send(`Caractere inválido ou faltanta, digite um número!`);
+            return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         }
 
         let resultado
@@ -34,7 +34,7 @@ app.get("/:operacao/:numUm/:numDois", (req, res) => {
                 }
             break;
             default:
-                return res.status(400).send("Operação inválida ou indispónivel");
+                return res.status(400).send("Operação inválida ou indisponível");
         }
 
         res.status(200).send(`Resultado: ${resultado.toFixed(2)}`);

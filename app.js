@@ -33,7 +33,7 @@ app.get("/", (req, res) =>{
                 };
             break;
             default:
-                return res.status(400).send("Operação inválida ou indispónivel");
+                return res.status(400).send("Operação inválida ou indisponível");
         };
 
         res.status(200).send(`Resultado: ${resultado.toFixed(2)}`);

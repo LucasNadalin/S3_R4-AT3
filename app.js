@@ -41,7 +41,7 @@ app.get("/:operacao/:numUm/:numDois", (req, res) => {
 
 
     } catch (error) {
-        console.error("Erro ao realizar o calculo!")
+        console.error("Erro ao realizar o calculo!" + error)
         res.status(500).send(`Erro interno no servidor!`)
     }
 });

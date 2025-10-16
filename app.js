@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8083;
 
-app.get("/", (req, res) =>{
+app.get("/calculadora", (req, res) =>{
     try {
         const operacao = req.query.operacao;
         const numUm = parseFloat(req.query.numUm);

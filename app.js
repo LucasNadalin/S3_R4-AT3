@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const PORT = 8083;
 
-app.get("/", (req, res) =>{
+app.get("/operacao/:tipo", (req, res) =>{
     try {
-        const operacao = req.query.operacao;
+        const tipo = req.params.tipo;
         const numUm = parseFloat(req.query.numUm);
         const numDois = parseFloat(req.query.numDois);
 
@@ -15,7 +15,7 @@ app.get("/", (req, res) =>{
         let resultado;
 
         // Switch Case
-        switch(operacao){
+        switch(tipo){
             case "soma":
                 resultado = numUm + numDois;
             break;

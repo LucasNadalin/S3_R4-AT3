@@ -39,7 +39,7 @@ app.get("/calculadora", (req, res) =>{
         res.status(200).send(`Resultado: ${resultado.toFixed(2)}`);
         
     } catch (error) {
-        console.error("Erro ao realizar o calculo!");
+        console.error("Erro ao realizar o calculo!" + error);
         res.status(500).send(`Erro interno no servidor!`);
     }
 });

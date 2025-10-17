@@ -4,14 +4,13 @@ const PORT = 8083;
 
 app.get("/soma/:numUm/:numDois", (req, res) => {
     try {
-        const numUm = parseFloat(req.params.numUm);
-        const numDois = parseFloat(req.params.numDois);
+        const {numUm, numDois} = req.params;
 
-        if (numUm & numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
+        if (numUm == undefined || numUm == "" || numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
 
-        const resultado = numUm + numDois;
+        const resultado = parseFloat(numUm) + parseFloat(numDois);
 
         res.status(200).send(`Resultado da Soma: ${resultado.toFixed(2)}`);
 
@@ -23,14 +22,13 @@ app.get("/soma/:numUm/:numDois", (req, res) => {
 
 app.get("/subtracao/:numUm/:numDois", (req, res) => {
     try {
-        const numUm = parseFloat(req.params.numUm);
-        const numDois = parseFloat(req.params.numDois);
+        const {numUm, numDois} = req.params;
 
-        if (numUm & numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
+        if (numUm == undefined || numUm == "" || numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
 
-        const resultado = numUm - numDois;
+        const resultado = parseFloat(numUm) - parseFloat(numDois);
 
         res.status(200).send(`Resultado da Subtração: ${resultado.toFixed(2)}`)
 
@@ -42,14 +40,12 @@ app.get("/subtracao/:numUm/:numDois", (req, res) => {
 
 app.get("/multiplicacao/:numUm/:numDois", (req, res) => {
     try {
-        const numUm = parseFloat(req.params.numUm);
-        const numDois = parseFloat(req.params.numDois);
-
-        if (numUm & numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
+        const {numUm, numDois} = req.params;
+        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
 
-        const resultado = numUm * numDois;
+        const resultado = parseFloat(numUm) * parseFloat(numDois);
 
         res.status(200).send(`Resultado da Multiplicação: ${resultado.toFixed(2)}`)
 
@@ -61,19 +57,15 @@ app.get("/multiplicacao/:numUm/:numDois", (req, res) => {
 
 app.get("/divisao/:numUm/:numDois", (req, res) => {
     try {
-        const numUm = parseFloat(req.params.numUm);
-        const numDois = parseFloat(req.params.numDois);
+        const {numUm, numDois} = req.params;
 
-        if (numUm & numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
-            return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
+        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois) || numDois == 0) {
+            return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
         };
 
-        if (numDois === 0) {
-            return res.status(400).send("Não é possível fazer divisão por 0");
-        } else {
-            const resultado = numUm / numDois;
-            res.status(200).send(`Resultado da Divisão: ${resultado.toFixed(2)}`)
-        };
+        const resultado = parseFloat(numUm) / parseFloat(numDois);
+
+        res.status(200).send(`Resultado da Divisão: ${resultado.toFixed(2)}`)
 
     } catch (error) {
         console.error("Erro ao realizar o calculo!" + error)

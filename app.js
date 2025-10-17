@@ -5,32 +5,25 @@ const PORT = 8083;
 app.get("/calculadora", (req, res) =>{
     try {
         const operacao = req.query.operacao;
-        const numUm = parseFloat(req.query.numUm);
-        const numDois = parseFloat(req.query.numDois);
+        const {numUm, numDois} = req.query;
 
-        if(numUm & numDois == undefined || numUm & numDois == "" || isNaN(numUm) || isNaN(numDois)){
-            return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
-        }
-
-        let resultado;
+        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois) || numDois == 0) {
+            return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+        };
 
         // Switch Case
         switch(operacao){
             case "soma":
-                resultado = numUm + numDois;
+                resultado = parseFloat(numUm) + parseFloat(numDois);
             break;
             case "subtracao":
-                resultado = numUm - numDois;
+                resultado = parseFloat(numUm) - parseFloat(numDois);
             break;
             case "multiplicacao":
-                resultado = numUm * numDois;
+                resultado = parseFloat(numUm) * parseFloat(numDois);
             break;
             case "divisao":
-                 if (numDois === 0){
-                    return res.status(400).send("Não é possível fazer divisão por 0");
-                }else{
-                    resultado = numUm / numDois;
-                };
+                    resultado = parseFloat(numUm) / parseFloat(numDois);
             break;
             default:
                 return res.status(400).send("Operação inválida ou indisponível");

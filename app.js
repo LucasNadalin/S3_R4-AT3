@@ -6,7 +6,7 @@ app.get("/soma/:numUm/:numDois", (req, res) => {
     try {
         const {numUm, numDois} = req.params;
 
-        if (numUm == undefined || numUm == "" || numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
+        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
 
@@ -24,7 +24,7 @@ app.get("/subtracao/:numUm/:numDois", (req, res) => {
     try {
         const {numUm, numDois} = req.params;
 
-        if (numUm == undefined || numUm == "" || numDois == undefined || isNaN(numUm) || isNaN(numDois)) {
+        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
 

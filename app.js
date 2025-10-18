@@ -11,19 +11,19 @@ app.get("/operacao/:tipo", (req, res) => {
         switch (tipo) {
             case "soma":
                 if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
-                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                    return res.status(400).send(`Caractere inválido ou faltante`);
                 };
                 resultado = parseFloat(numUm) + parseFloat(numDois);
                 break;
             case "subtracao":
                 if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
-                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                    return res.status(400).send(`Caractere inválido ou faltante`);
                 };
                 resultado = parseFloat(numUm) - parseFloat(numDois);
                 break;
             case "multiplicacao":
                 if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
-                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                    return res.status(400).send(`Caractere inválido ou faltante`);
                 };
                 resultado = parseFloat(numUm) * parseFloat(numDois);
                 break;

@@ -4,7 +4,7 @@ const PORT = 8083;
 
 app.get("/soma/:numUm/:numDois", (req, res) => {
     try {
-        const {numUm, numDois} = req.params;
+        const { numUm, numDois } = req.params;
 
         if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
@@ -22,7 +22,7 @@ app.get("/soma/:numUm/:numDois", (req, res) => {
 
 app.get("/subtracao/:numUm/:numDois", (req, res) => {
     try {
-        const {numUm, numDois} = req.params;
+        const { numUm, numDois } = req.params;
 
         if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
@@ -40,7 +40,7 @@ app.get("/subtracao/:numUm/:numDois", (req, res) => {
 
 app.get("/multiplicacao/:numUm/:numDois", (req, res) => {
     try {
-        const {numUm, numDois} = req.params;
+        const { numUm, numDois } = req.params;
         if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
             return res.status(400).send(`Caractere inválido ou faltante, digite um número!`);
         };
@@ -57,7 +57,7 @@ app.get("/multiplicacao/:numUm/:numDois", (req, res) => {
 
 app.get("/divisao/:numUm/:numDois", (req, res) => {
     try {
-        const {numUm, numDois} = req.params;
+        const { numUm, numDois } = req.params;
 
         if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois) || numDois == 0) {
             return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);

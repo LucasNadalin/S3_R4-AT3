@@ -7,22 +7,30 @@ app.get("/calculadora", (req, res) => {
         const operacao = req.query.operacao;
         const { numUm, numDois } = req.query;
 
-        if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois) || numDois == 0) {
-            return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
-        };
-
         // Switch Case
         switch (operacao) {
             case "soma":
+                if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
+                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                };
                 resultado = parseFloat(numUm) + parseFloat(numDois);
                 break;
             case "subtracao":
+                if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
+                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                };
                 resultado = parseFloat(numUm) - parseFloat(numDois);
                 break;
             case "multiplicacao":
+                if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois)) {
+                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                };
                 resultado = parseFloat(numUm) * parseFloat(numDois);
                 break;
             case "divisao":
+                if (numUm == undefined || numUm == "" || numDois == undefined || numDois == "" || isNaN(numUm) || isNaN(numDois) || numDois == 0) {
+                    return res.status(400).send(`Caractere inválido, faltante ou tentativa de divisao por 0`);
+                };
                 resultado = parseFloat(numUm) / parseFloat(numDois);
                 break;
             default:
